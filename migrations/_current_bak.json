@@ -1,0 +1,143 @@
+{
+    "tables": {
+        "Leads": {
+            "tableName": "Leads",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "primeiroNome": {
+                    "allowNull": false,
+                    "defaultValue": {
+                        "value": ""
+                    },
+                    "field": "primeiroNome",
+                    "seqType": "Sequelize.STRING"
+                },
+                "ultimoNome": {
+                    "allowNull": false,
+                    "defaultValue": {
+                        "value": ""
+                    },
+                    "field": "ultimoNome",
+                    "seqType": "Sequelize.STRING"
+                },
+                "genero": {
+                    "allowNull": false,
+                    "defaultValue": {
+                        "value": "desconhecido"
+                    },
+                    "field": "genero",
+                    "seqType": "Sequelize.ENUM('masculino', 'feminino', 'desconhecido')"
+                },
+                "nascimento": {
+                    "allowNull": true,
+                    "field": "nascimento",
+                    "seqType": "Sequelize.DATEONLY"
+                },
+                "created_at": {
+                    "allowNull": true,
+                    "defaultValue": {},
+                    "field": "created_at",
+                    "seqType": "Sequelize.DATE"
+                },
+                "email": {
+                    "allowNull": false,
+                    "field": "email",
+                    "seqType": "Sequelize.STRING"
+                },
+                "cpf": {
+                    "allowNull": true,
+                    "field": "cpf",
+                    "seqType": "Sequelize.STRING"
+                },
+                "cnpj": {
+                    "allowNull": true,
+                    "field": "cnpj",
+                    "seqType": "Sequelize.STRING"
+                },
+                "origem": {
+                    "allowNull": true,
+                    "field": "origem",
+                    "seqType": "Sequelize.STRING"
+                },
+                "telefone": {
+                    "allowNull": false,
+                    "field": "telefone",
+                    "seqType": "Sequelize.STRING"
+                },
+                "horario": {
+                    "allowNull": false,
+                    "field": "horario",
+                    "seqType": "Sequelize.DATE"
+                },
+                "mensagem": {
+                    "allowNull": false,
+                    "defaultValue": {
+                        "value": ""
+                    },
+                    "field": "mensagem",
+                    "seqType": "Sequelize.STRING"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "Produtos": {
+            "tableName": "Produtos",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "name": {
+                    "field": "name",
+                    "seqType": "Sequelize.STRING"
+                },
+                "description": {
+                    "field": "description",
+                    "seqType": "Sequelize.STRING"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "idProduto": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "Leads",
+                        "key": "id"
+                    },
+                    "onDelete": "SET NULL",
+                    "onUpdate": "CASCADE",
+                    "field": "idProduto",
+                    "seqType": "Sequelize.INTEGER"
+                }
+            },
+            "indexes": []
+        }
+    },
+    "revision": 2
+}

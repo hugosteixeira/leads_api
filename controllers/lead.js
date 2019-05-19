@@ -1,4 +1,3 @@
-require('../models/lead')
 var model = require('../models/index')
 
 module.exports = {
@@ -25,9 +24,12 @@ module.exports = {
             horario,
             idProduto,
             mensagem,
+            cpf,
+            cnpj,
+            nascimento,
         } = req.body;
         model.Lead.create({
-            nome: nome,
+            primeiroNome: nome,
             email: email,
             telefone: telefone,
             cep: cep,
@@ -35,6 +37,9 @@ module.exports = {
             horario: horario,
             idProduto: idProduto,
             mensagem: mensagem,
+            cpf: cpf,
+            cnpj: cnpj,
+            nascimento: nascimento,
         })
             .then(lead => res.status(201).json({
                 error: false,
@@ -65,18 +70,21 @@ module.exports = {
     async update(req, res, next) {
         const lead_id = req.params.id;
         const {
-            nome: nome,
-            email: email,
-            telefone: telefone,
-            cep: cep,
-            origem: origem,
-            horario: horario,
-            idProduto: idProduto,
-            mensagem: mensagem,
+            nome,
+            email,
+            telefone,
+            cep,
+            origem,
+            horario,
+            idProduto,
+            mensagem,
+            cpf,
+            cnpj,
+            nascimento,
         } = req.body;
 
         model.Lead.update({
-            nome: nome,
+            primeiroNome: nome,
             email: email,
             telefone: telefone,
             cep: cep,
@@ -84,6 +92,9 @@ module.exports = {
             horario: horario,
             idProduto: idProduto,
             mensagem: mensagem,
+            cpf: cpf,
+            cnpj: cnpj,
+            nascimento: nascimento,
         }, {
                 where: {
                     id: lead_id
