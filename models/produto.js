@@ -5,7 +5,6 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.STRING
   }, {});
   Produto.associate = function (models) {
-    Produto.belongsTo(models.Lead, { foreignKey: 'idProduto' });
   };
   return Produto;
 };

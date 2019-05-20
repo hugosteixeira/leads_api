@@ -12,12 +12,47 @@ var Sequelize = require('sequelize');
 
 var info = {
     "revision": 1,
-    "name": "test12",
-    "created": "2019-05-20T02:01:12.301Z",
+    "name": "test11",
+    "created": "2019-05-20T02:31:18.086Z",
     "comment": ""
 };
 
-var migrationCommands = [{
+var migrationCommands = [
+    {
+        fn: "createTable",
+        params: [
+            "Produtos",
+            {
+                "id": {
+                    "type": Sequelize.INTEGER,
+                    "field": "id",
+                    "autoIncrement": true,
+                    "primaryKey": true,
+                    "allowNull": false
+                },
+                "name": {
+                    "type": Sequelize.STRING,
+                    "field": "name"
+                },
+                "description": {
+                    "type": Sequelize.STRING,
+                    "field": "description"
+                },
+                "createdAt": {
+                    "type": Sequelize.DATE,
+                    "field": "createdAt",
+                    "allowNull": false
+                },
+                "updatedAt": {
+                    "type": Sequelize.DATE,
+                    "field": "updatedAt",
+                    "allowNull": false
+                },
+            },
+            {}
+        ]
+    },
+    {
         fn: "createTable",
         params: [
             "Leads",
@@ -97,40 +132,6 @@ var migrationCommands = [{
                     "type": Sequelize.DATE,
                     "field": "updatedAt",
                     "allowNull": false
-                }
-            },
-            {}
-        ]
-    },
-    {
-        fn: "createTable",
-        params: [
-            "Produtos",
-            {
-                "id": {
-                    "type": Sequelize.INTEGER,
-                    "field": "id",
-                    "autoIncrement": true,
-                    "primaryKey": true,
-                    "allowNull": false
-                },
-                "name": {
-                    "type": Sequelize.STRING,
-                    "field": "name"
-                },
-                "description": {
-                    "type": Sequelize.STRING,
-                    "field": "description"
-                },
-                "createdAt": {
-                    "type": Sequelize.DATE,
-                    "field": "createdAt",
-                    "allowNull": false
-                },
-                "updatedAt": {
-                    "type": Sequelize.DATE,
-                    "field": "updatedAt",
-                    "allowNull": false
                 },
                 "idProduto": {
                     "type": Sequelize.INTEGER,
@@ -138,7 +139,7 @@ var migrationCommands = [{
                     "onUpdate": "CASCADE",
                     "onDelete": "SET NULL",
                     "references": {
-                        "model": "Leads",
+                        "model": "Produtos",
                         "key": "id"
                     },
                     "allowNull": true
@@ -151,15 +152,13 @@ var migrationCommands = [{
 
 module.exports = {
     pos: 0,
-    up: function(queryInterface, Sequelize)
-    {
+    up: function (queryInterface, Sequelize) {
         var index = this.pos;
-        return new Promise(function(resolve, reject) {
+        return new Promise(function (resolve, reject) {
             function next() {
-                if (index < migrationCommands.length)
-                {
+                if (index < migrationCommands.length) {
                     let command = migrationCommands[index];
-                    console.log("[#"+index+"] execute: " + command.fn);
+                    console.log("[#" + index + "] execute: " + command.fn);
                     index++;
                     queryInterface[command.fn].apply(queryInterface, command.params).then(next, reject);
                 }
