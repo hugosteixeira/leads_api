@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes, NOW) => {
   })
 
   Lead.associate = function (models) {
-    Lead.hasOne(models.Produto, { foreignKey: 'idProduto' });
+
   };
   return Lead;
 };

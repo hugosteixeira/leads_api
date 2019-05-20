@@ -5,6 +5,8 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.STRING
   }, {});
   Produto.associate = function (models) {
+    Produto.hasOne(models.Lead, { foreignKey: 'idProduto' });
+
   };
   return Produto;
 };

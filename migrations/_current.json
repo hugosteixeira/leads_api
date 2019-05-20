@@ -91,6 +91,17 @@
                     "allowNull": false,
                     "field": "updatedAt",
                     "seqType": "Sequelize.DATE"
+                },
+                "idProduto": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "Produtos",
+                        "key": "id"
+                    },
+                    "onDelete": "SET NULL",
+                    "onUpdate": "CASCADE",
+                    "field": "idProduto",
+                    "seqType": "Sequelize.INTEGER"
                 }
             },
             "indexes": []
@@ -122,21 +133,10 @@
                     "allowNull": false,
                     "field": "updatedAt",
                     "seqType": "Sequelize.DATE"
-                },
-                "idProduto": {
-                    "allowNull": true,
-                    "references": {
-                        "model": "Leads",
-                        "key": "id"
-                    },
-                    "onDelete": "SET NULL",
-                    "onUpdate": "CASCADE",
-                    "field": "idProduto",
-                    "seqType": "Sequelize.INTEGER"
                 }
             },
             "indexes": []
         }
     },
-    "revision": 2
+    "revision": 1
 }

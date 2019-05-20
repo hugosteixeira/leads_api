@@ -5,20 +5,19 @@ var Sequelize = require('sequelize');
 /**
  * Actions summary:
  *
- * createTable "Leads", deps: []
- * createTable "Produtos", deps: [Leads]
+ * createTable "Produtos", deps: []
+ * createTable "Leads", deps: [Produtos]
  *
  **/
 
 var info = {
     "revision": 1,
-    "name": "test11",
-    "created": "2019-05-20T02:31:18.086Z",
+    "name": "test13",
+    "created": "2019-05-20T04:21:16.152Z",
     "comment": ""
 };
 
-var migrationCommands = [
-    {
+var migrationCommands = [{
         fn: "createTable",
         params: [
             "Produtos",
@@ -47,7 +46,7 @@ var migrationCommands = [
                     "type": Sequelize.DATE,
                     "field": "updatedAt",
                     "allowNull": false
-                },
+                }
             },
             {}
         ]
@@ -123,6 +122,11 @@ var migrationCommands = [
                     "defaultValue": "",
                     "allowNull": false
                 },
+                "pontuacao": {
+                    "type": Sequelize.INTEGER,
+                    "field": "pontuacao",
+                    "allowNull": false
+                },
                 "createdAt": {
                     "type": Sequelize.DATE,
                     "field": "createdAt",
@@ -152,13 +156,15 @@ var migrationCommands = [
 
 module.exports = {
     pos: 0,
-    up: function (queryInterface, Sequelize) {
+    up: function(queryInterface, Sequelize)
+    {
         var index = this.pos;
-        return new Promise(function (resolve, reject) {
+        return new Promise(function(resolve, reject) {
             function next() {
-                if (index < migrationCommands.length) {
+                if (index < migrationCommands.length)
+                {
                     let command = migrationCommands[index];
-                    console.log("[#" + index + "] execute: " + command.fn);
+                    console.log("[#"+index+"] execute: " + command.fn);
                     index++;
                     queryInterface[command.fn].apply(queryInterface, command.params).then(next, reject);
                 }
