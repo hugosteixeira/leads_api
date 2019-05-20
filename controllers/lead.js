@@ -1,4 +1,5 @@
 var model = require('../models/index')
+const Sequelize = require('sequelize');
 const Op = Sequelize.Op
 
 module.exports = {
