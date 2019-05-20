@@ -63,7 +63,7 @@ module.exports = {
 
     },
     async getOne(req, res, next) {
-        model.Lead.findAll({ where: { id: req.params.id } })
+        model.Lead.findOne({ where: { id: req.params.id } })
             .then(leads => res.status(200).json({
                 error: false,
                 data: leads,
