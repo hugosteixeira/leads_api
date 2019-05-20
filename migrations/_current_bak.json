@@ -77,11 +77,6 @@
                     "field": "mensagem",
                     "seqType": "Sequelize.STRING"
                 },
-                "pontuacao": {
-                    "allowNull": false,
-                    "field": "pontuacao",
-                    "seqType": "Sequelize.INTEGER"
-                },
                 "createdAt": {
                     "allowNull": false,
                     "field": "createdAt",
@@ -138,5 +133,5 @@
             "indexes": []
         }
     },
-    "revision": 2
+    "revision": 1
 }

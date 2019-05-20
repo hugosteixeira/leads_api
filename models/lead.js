@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes, NOW) => {
     telefone: { type: DataTypes.STRING, allowNull: false },
     horario: { type: DataTypes.DATE, allowNull: false },
     mensagem: { type: DataTypes.STRING, allowNull: false, defaultValue: '' },
+    pontuacao: { type: DataTypes.INTEGER, allowNull: false },
 
   })
 

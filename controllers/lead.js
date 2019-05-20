@@ -124,6 +124,19 @@ module.exports = {
                 error: true,
                 error: error
             }));
-    }
+    },
+    async getByPoints(req, res, next) {
+        model.Lead.findAll({ where: { pontuacao: [Op.gt]: res.pontuacao } })
+            .then(leads => res.status(200).json({
+                error: false,
+                data: leads,
+
+            }))
+            .catch(error => res.status(404).json({
+                error: true,
+                data: [],
+                error: error,
+            }));
+    },
 
 }
