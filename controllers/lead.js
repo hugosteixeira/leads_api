@@ -1,4 +1,5 @@
 var model = require('../models/index')
+const Op = Sequelize.Op
 
 module.exports = {
     async getAll(req, res, next) {
