@@ -19,3 +19,45 @@ npm run start
 ```
 ## Links
 You can see it working here: [API Link](https://leadsapihugosteixeira.herokuapp.com)
+
+
+##Routes
+
+Get all Leads
+```
+"leads/" GET
+```
+
+Get one Lead
+
+```
+"leads/:id" GET
+```
+
+Update one Lead
+
+```
+"leads/:id" PUT
+```
+
+Delete one Lead
+
+```
+"leads/:id" DELETE
+```
+
+Create one Lead
+```
+"leads/create/" POST
+```
+
+all the aboves routes can be used to produtos, like:
+
+```
+"produtos/:id" GET
+```
+
+Get leads with score greater than some value:
+```
+"leads/pontuacao/:pontos" GET
+```
