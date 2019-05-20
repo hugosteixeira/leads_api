@@ -128,7 +128,7 @@ module.exports = {
             }));
     },
     async getByPoints(req, res, next) {
-        model.Lead.findAll({ where: { pontuacao: { [Op.gt]: res.pontuacao } } })
+        model.Lead.findAll({ where: { pontuacao: { [Op.gt]: req.params.pontos } } })
             .then(leads => res.status(200).json({
                 error: false,
                 data: leads,
