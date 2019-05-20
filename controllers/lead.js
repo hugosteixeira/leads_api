@@ -18,7 +18,8 @@ module.exports = {
     },
     async create(req, res, next) {
         const {
-            nome,
+            primeiroNome,
+            ultimoNome,
             email,
             telefone,
             cep,
@@ -29,9 +30,13 @@ module.exports = {
             cpf,
             cnpj,
             nascimento,
+            pontuacao,
+            genero,
+
         } = req.body;
         model.Lead.create({
-            primeiroNome: nome,
+            primeiroNome: primeiroNome,
+            ultimoNome: ultimoNome,
             email: email,
             telefone: telefone,
             cep: cep,
@@ -42,6 +47,8 @@ module.exports = {
             cpf: cpf,
             cnpj: cnpj,
             nascimento: nascimento,
+            pontuacao: pontuacao,
+            genero: genero,
         })
             .then(lead => res.status(201).json({
                 error: false,
@@ -72,7 +79,8 @@ module.exports = {
     async update(req, res, next) {
         const lead_id = req.params.id;
         const {
-            nome,
+            primeiroNome,
+            ultimoNome,
             email,
             telefone,
             cep,
@@ -83,10 +91,14 @@ module.exports = {
             cpf,
             cnpj,
             nascimento,
+            pontuacao,
+            genero,
+
         } = req.body;
 
         model.Lead.update({
-            primeiroNome: nome,
+            primeiroNome: primeiroNome,
+            ultimoNome: ultimoNome,
             email: email,
             telefone: telefone,
             cep: cep,
@@ -97,6 +109,8 @@ module.exports = {
             cpf: cpf,
             cnpj: cnpj,
             nascimento: nascimento,
+            pontuacao: pontuacao,
+            genero: genero,
         }, {
                 where: {
                     id: lead_id
